@@ -1,10 +1,12 @@
 const express = require('express');
-const morgan = require('morgan');
+const volleyball = require('volleyball');
 //const cors = require('cors');
 
 const app = express();
 
-app.use(morgan('dev'));
+const auth = require("./auth/index.js")
+
+app.use(volleyball);
 //app.use(cors());
 
 app.get('/', (req, res) => {
@@ -13,7 +15,7 @@ app.get('/', (req, res) => {
   });
 });
 
-
+app.use("/auth")
 
 function notFound(req, res, next) {
   res.status(404);
